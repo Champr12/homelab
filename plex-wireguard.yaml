@@ -1,0 +1,36 @@
+# Docker Compose file for Plex and Wireguard containers
+services:
+# Wireguard container configuration
+  wireguard:
+    image: linuxserver/wireguard
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Canada/Pacific
+    volumes:
+      - /home/localusr/docker/wireguard:/config
+      - /lib/modules:/lib/modules
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    ports:
+      - 32400:32400
+    restart: unless-stopped
+
+# Plex container configuration
+  plex:
+    image: linuxserver/plex:latest
+    container_name: plex
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Canada/Pacific
+      - VERSION=docker
+    volumes:
+      - /home/localusr/docker/plex/config:/config
+      - /home/localusr/docker/plex/media:/media
+    network_mode: service:wireguard
+    restart: unless-stopped
