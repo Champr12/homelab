@@ -10,8 +10,8 @@ services:
       - TZ=Canada/Pacific
     volumes:
       - /home/localusr/docker/syncthing/config:/config
-      - /home/localusr/docker/syncthing/data1:/data1
-      - /home/localusr/docker/syncthing/data2:/data2
+      - /home/localusr/docker/plex/media/Movies:/Movies
+      - /home/localusr/docker/plex/media/Shows:/Shows
     ports:
       - 8384:8384
       - 22000:22000/tcp
