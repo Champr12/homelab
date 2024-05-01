@@ -3,7 +3,7 @@ services:
   syncthing:
     image: lscr.io/linuxserver/syncthing:latest
     container_name: syncthing
-    hostname: syncthing #optional
+    hostname: ubuntu_docker #optional
     environment:
       - PUID=1000
       - PGID=1000
