@@ -1,0 +1,40 @@
+# Docker Compose file to deploy Wireguard server and Caddy containers
+services:
+# Wireguard server container configuration
+  wireguard:
+    image: linuxserver/wireguard:latest
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - SERVERURL=82.197.65.115
+      - SERVERPORT=51820
+      - PEERS=plexServer
+      - PEERDNS=auto
+      - INTERNAL_SUBNET=10.13.13.0
+      - LOG_CONFS=true
+    ports:
+      - "51820:51820/udp"
+      - "127.0.0.1:32400:32400"
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /root/wireguard/config:/config
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
+
+# Caddy container configuration
+  caddy:
+    image: caddy:latest
+    container_name: "caddy"
+    restart: always
+    network_mode: service:wireguard
+    volumes:
+      - "/root/caddy/Caddyfile:/etc/caddy/Caddyfile:ro"
+      - "/root/caddy/data:/data"
+      - "/root/caddy/config:/config"
