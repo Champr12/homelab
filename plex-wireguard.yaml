@@ -1,4 +1,4 @@
-# Docker Compose file for Plex and Wireguard containers
+# Docker Compose file to deploy Plex and Wireguard containers
 services:
 # Wireguard container configuration
   wireguard:
