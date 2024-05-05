@@ -31,6 +31,6 @@ services:
       - VERSION=docker
     volumes:
       - /home/localusr/docker/plex/config:/config
-      - /home/localusr/docker/plex/media:/media
+      - /home/localusr/docker/plex/media:/media:rw
     network_mode: service:wireguard
     restart: unless-stopped
