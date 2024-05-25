@@ -1,3 +1,4 @@
+# Import modules to interact with the OS
 import os
 import subprocess
 
@@ -15,6 +16,6 @@ def is_directory_empty(directory):
 # Loops over the directories list and check if the directories are empty
 for directory in directories:
     if is_directory_empty(directory):
-        print(f"{directory} is empty.")
-    else:
-        print(f"{directory} is not empty.")
+        subprocess.run(["rclone", "mount", "whatbox:/home/champr12/Movies", "/home/localusr/docker/plex/media/Movies", "--allow-other", "--daemon"])
+        subprocess.run(["rclone", "mount", "whatbox:/home/champr12/Shows", "/home/localusr/docker/plex/media/Shows", "--allow-other", "--daemon"])       
+        subprocess.run([])
