@@ -15,7 +15,9 @@ def is_directory_empty(directory):
 
 # Loops over the directories list and check if the directories are empty
 for directory in directories:
-    if is_directory_empty(directory):
+    if is_directory_empty(directory) and directory == "/home/localusr/docker/plex/media/Movies":
         subprocess.run(["rclone", "mount", "whatbox:/home/champr12/Movies", "/home/localusr/docker/plex/media/Movies", "--allow-other", "--daemon"])
+    elif is_directory_empty(directory) and directory == "/home/localusr/docker/plex/media/Shows":
         subprocess.run(["rclone", "mount", "whatbox:/home/champr12/Shows", "/home/localusr/docker/plex/media/Shows", "--allow-other", "--daemon"])       
-        subprocess.run([])
+
+    
