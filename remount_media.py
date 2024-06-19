@@ -14,7 +14,8 @@ def is_directory_empty(directory):
     return len(os.listdir(directory)) == 0
 
 # Loops over the directories list and check if the directories are empty, run the mount commands if the directories are empty
-# the mount commands are "rclone mount whatbox:/home/champr12/Movies /home/localusr/docker/plex/media/Movies --allow-other --daemon" and "rclone mount whatbox:/home/champr12/Shows /home/localusr/docker/plex/media/Shows --allow-other --daemon" 
+# the mount commands are "rclone mount whatbox:/home/champr12/Movies /home/localusr/docker/plex/media/Movies --allow-other --daemon" 
+# and "rclone mount whatbox:/home/champr12/Shows /home/localusr/docker/plex/media/Shows --allow-other --daemon" 
 for directory in directories:
     if is_directory_empty(directory) and directory == "/home/localusr/docker/plex/media/Movies":
         subprocess.run(["rclone", "mount", "whatbox:/home/champr12/Movies", "/home/localusr/docker/plex/media/Movies", "--allow-other", "--daemon"])
