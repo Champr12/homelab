@@ -7,7 +7,7 @@ services:
       - PGID=1000
       - TZ=Canada/Pacific
     volumes:
-      - /home/localusr/docker/overseerr/config:/app/config
+      - /home/localusr/docker/overseerr/config:/config
     ports:
       - 5055:5055
     restart: unless-stopped
