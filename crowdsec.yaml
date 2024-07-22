@@ -68,9 +68,9 @@ services:
         ipv4_address: 172.20.0.5
 
 volumes:
-  logs:
-  crowdsec-db:
-  crowdsec-config:
+  logs: /var/log
+  crowdsec-db: /root/crowdsec/data
+  crowdsec-config: /root/crowdsec/config
 
 networks:
   crowdsec_test:
