@@ -42,9 +42,9 @@ services:
       - 'reverse-proxy'
     volumes:
       - ./crowdsec/acquis.yaml:/etc/crowdsec/acquis.yaml
-      - logs:/var/log/nginx
-      - crowdsec-db:/var/lib/crowdsec/data/
-      - crowdsec-config:/etc/crowdsec/
+      - /var/log:/var/log/nginx
+      - /root/crowdsec/data:/var/lib/crowdsec/data/
+      - /root/crowdsec/config:/etc/crowdsec/
     networks:
       crowdsec_test:
         ipv4_address: 172.20.0.4
@@ -67,10 +67,10 @@ services:
       crowdsec_test:
         ipv4_address: 172.20.0.5
 
-volumes:
-  logs: /var/log
-  crowdsec-db: /root/crowdsec/data
-  crowdsec-config: /root/crowdsec/config
+# volumes:
+#   logs: /var/log
+#   crowdsec-db: /root/crowdsec/data
+#   crowdsec-config: /root/crowdsec/config
 
 networks:
   crowdsec_test:
