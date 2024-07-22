@@ -4,7 +4,7 @@ services:
     container_name: crowdsec
     restart: unless-stopped
     volumes:
-      - ./crowdsec/acquis.yaml:/etc/crowdsec/acquis.yaml
+#      - ./crowdsec/acquis.yaml:/etc/crowdsec/acquis.yaml
 #     - logs:/var/log/nginx
       - /root/crowdsec/data:/var/lib/crowdsec/data/
       - /root/crowdsec/config:/etc/crowdsec/
