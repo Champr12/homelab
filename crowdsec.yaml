@@ -62,7 +62,7 @@ services:
     depends_on:
       - 'crowdsec'
     volumes:
-      - crowdsec-db:/metabase-data/
+      - /root/crowdsec/data:/metabase-data/
     networks:
       crowdsec_test:
         ipv4_address: 172.20.0.5
