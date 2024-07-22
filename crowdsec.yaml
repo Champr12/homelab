@@ -1,6 +1,7 @@
 services:
   crowdsec:
     image: crowdsecurity/crowdsec
+    container_name: crowdsec
     restart: unless-stopped
     volumes:
       - ./crowdsec/acquis.yaml:/etc/crowdsec/acquis.yaml
