@@ -1,12 +1,7 @@
 services:
   crowdsec:
     image: crowdsecurity/crowdsec
-    restart: always
-    environment:
-      COLLECTIONS: "crowdsecurity/nginx"
-      GID: "${GID-1000}"
-    depends_on:
-      - 'reverse-proxy'
+    restart: unless-stopped
     volumes:
       - ./crowdsec/acquis.yaml:/etc/crowdsec/acquis.yaml
 #     - logs:/var/log/nginx
