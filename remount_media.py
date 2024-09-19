@@ -23,4 +23,4 @@ for directory in directories:
         subprocess.run(["rclone", "mount", "whatbox:/home/champr12/Shows", "/home/localusr/docker/plex/media/Shows", "--allow-other", "--daemon"])       
 
 # Restart the Plex Docker container
-subprocess.run(["sudo","docker", "restart", "61a4023ebc29"])
+subprocess.run(["sudo","docker", "restart", "4ddd462e217f"])
